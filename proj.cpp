@@ -62,7 +62,7 @@ int startexploreval = 100;
 int endexploreval   = 65000;
 */
 
-// mystere4 (moyen, SHORT)
+/* // mystere4 (moyen, SHORT)
 #define FICHIER  "Mystere4_SHORT_X_512_Y_512_Z_322.raw"
 int gridSize  = 512;
 int YgridSize = 512;
@@ -71,6 +71,17 @@ int ZgridSize = 322;
 #define SMALL
 int startexploreval = 100;
 int endexploreval   = 65000;
+*/
+
+// mystere6 (grand, CHAR, BIG)
+#define FICHIER  "Mystere6_CHAR_X_1118_Y_2046_Z_694.raw"
+int gridSize  = 1118;
+int YgridSize = 2046;
+int ZgridSize = 694;
+#define CHAR
+#define BIG
+int startexploreval = 1;
+int endexploreval   = 255;
 
 
 
