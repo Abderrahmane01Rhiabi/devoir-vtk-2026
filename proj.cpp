@@ -39,7 +39,7 @@ int endexploreval   = 200;
 */
 
 
-// mystere1 (moyen, SHORT)
+/* // mystere1 (moyen, SHORT)
 #define FICHIER  "Mystere1_SHORT_X_512_Y_512_Z_134.raw"
 int gridSize  = 512;
 int YgridSize = 512;
@@ -48,18 +48,19 @@ int ZgridSize = 134;
 #define SMALL
 int startexploreval = 100;
 int endexploreval   = 65000;
+*/
 
 
-/* // mystere2 (moyen, SHORT)
-#define FICHIER  "Mystere2_SHORT_X_512_Y_499_Z_512.raw"
+// mystere2 (moyen, SHORT)
+#define FICHIER  "Mystere2_SHORT_X_512_Y_400_Z_512.raw"
 int gridSize  = 512;
-int YgridSize = 499;
+int YgridSize = 400;
 int ZgridSize = 512;
 #define SHORT
 #define SMALL
 int startexploreval = 100;
 int endexploreval   = 65000;
-*/
+
 
 
 /* // mystere5 (tres grand, SHORT, BIG)
