@@ -27,7 +27,7 @@
 
 // --- choix du fichier de donnees (decommenter UN bloc) ----------------------
 
-/* // frog (petit, CHAR, pour tester - on doit voir une grenouille)
+// frog (petit, CHAR, pour tester - on doit voir une grenouille)
 #define FICHIER  "Frog_CHAR_X_256_Y_256_Z_44.raw"
 int gridSize  = 256;
 int YgridSize = 256;
@@ -36,7 +36,7 @@ int ZgridSize = 44;
 #define SMALL
 int startexploreval = 13;
 int endexploreval   = 200;
-*/
+
 
 /* // mystere1 (moyen, SHORT)
 #define FICHIER  "Mystere1_SHORT_X_512_Y_512_Z_134.raw"
@@ -94,7 +94,7 @@ int startexploreval = 37;
 int endexploreval   = 255;
 */
 
-// mystere11 (SHORT, SMALL)
+/* // mystere11 (SHORT, SMALL)
 #define FICHIER  "Mystere11_SHORT_X_512_Y_512_Z_1024.raw"
 int gridSize  = 512;
 int YgridSize = 512;
@@ -103,6 +103,7 @@ int ZgridSize = 1024;
 #define SMALL
 int startexploreval = 100;
 int endexploreval   = 65000;
+*/
 
 
 
