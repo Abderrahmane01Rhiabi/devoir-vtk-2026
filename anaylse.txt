@@ -220,3 +220,43 @@ tplocal@OR-ST-E07L02:~/devoir-vtk-2026/build$ ./vtktp --batch
 
 
 
+
+
+
+tplocal@OR-ST-E07L02:~/devoir-vtk-2026/build$ make -j$(nproc)
+Consolidate compiler generated dependencies of target vtktp
+[ 33%] Building CXX object CMakeFiles/vtktp.dir/proj.cpp.o
+[ 66%] Linking CXX executable vtktp
+[100%] Built target vtktp
+tplocal@OR-ST-E07L02:~/devoir-vtk-2026/build$ ./vtktp --bench
+============================================================
+  devoir visualisation vtk 2026
+  fichier  : Mystere5_SHORT_X_2048_Y_2048_Z_756.raw
+  dims     : 2048 x 2048 x 756
+  bloc ooc : 16 tranches Z
+  openmp   : 16 threads
+  mode     : bench
+============================================================
+Memory: for "demarrage", the program has requested virtual mem 232060Ko", resident set 66836Ko
+
+[bench] valeur isosurface de test : 32550
+
+    [readblock] min=0  max=65295  (bloc z=0...755)
+[mode 1 - naif complet]   temps=44.81s   RAM+10794312 ko
+Memory: for "apres mode naif", the program has requested virtual mem 232248.00Ko", resident set 72400.00Ko
+  [ooc-seq] 48 blocs de 16 tranches
+  [ooc-seq] [                              ]   0%  0/48      [readblock] min=2304  max=60672  (bloc z=0...15)
+  [ooc-seq] [==============================] 100%  48/48  
+[mode 2 - ooc sequentiel] temps=73.32s   RAM+5237060 ko   polygones=88218532
+Memory: for "apres ooc sequentiel", the program has requested virtual mem 1512756.00Ko", resident set 1296172.00Ko
+  [ooc-par] 48 blocs, 16 threads openmp
+  [ooc-par] [========                      ]  27%  13/48      [readblock] min=2304  max=60672  (bloc z=0...15)
+  [ooc-par] [============================= ]  97%  47/48  
+[mode 3 - ooc+openmp]     temps=12.01s   RAM+3811260 ko   polygones=88218532
+Memory: for "apres ooc+openmp", the program has requested virtual mem 1983704.00Ko", resident set 1094144.00Ko
+
+[bench] termine.
+tplocal@OR-ST-E07L02:~/devoir-vtk-2026/build$ 
+
+
+
