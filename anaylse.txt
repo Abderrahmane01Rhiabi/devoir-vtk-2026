@@ -1,0 +1,222 @@
+tplocal@OR-ST-E07L02:~/devoir-vtk-2026/butplocal@OR-ST-E07L02:~/devoir-vtk-2026/build$ m$(nproc)
+ake -j$(nproc)
+Consolidate compiler generated dependencies of target vtktp
+[ 33%] Building CXX object CMakeFiles/vtktp.dir/proj.cpp.o
+[ 66%] Linking CXX executable vtktp
+[100%] Built target vtktp
+tplocal@OR-ST-E07L02:~/devoir-vtk-2026/build$ ./vtktp --bench
+============================================================
+  devoir visualisation vtk 2026
+  fichier  : Mystere6_CHAR_X_1118_Y_2046_Z_694.raw
+  dims     : 1118 x 2046 x 694
+  bloc ooc : 16 tranches Z
+  openmp   : 16 threads
+  mode     : bench
+============================================================
+Memory: for "demarrage", the program has requested virtual mem 232060Ko", resident set 67976Ko
+
+[bench] valeur isosurface de test : 128
+
+    [readblock] min=0  max=254  (bloc z=0...693)
+[mode 1 - naif complet]   temps=17.21s   RAM+1582300 ko
+Memory: for "apres mode naif", the program has requested virtual mem 232188.00Ko", resident set 72064.00Ko
+  [ooc-seq] 44 blocs de 16 tranches
+  [ooc-seq] [                              ]   0%  0/44      [readblock] min=0  max=0  (bloc z=0...15)
+  [ooc-seq] [==============================] 100%  44/44  
+[mode 2 - ooc sequentiel] temps=17.68s   RAM+95748 ko   polygones=567389
+Memory: for "apres ooc sequentiel", the program has requested virtual mem 324652.00Ko", resident set 104236.00Ko
+  [ooc-par] 44 blocs, 16 threads openmp
+  [ooc-par] [===                           ]  11%  5/44      [readblock] min=0  max=0  (bloc z=0...15)
+  [ooc-par] [============================= ]  97%  43/44  
+[mode 3 - ooc+openmp]     temps=4.33s   RAM+61796 ko   polygones=567389
+Memory: for "apres ooc+openmp", the program has requested virtual mem 1456356.00Ko", resident set 166032.00Ko
+
+[bench] termine.
+tplocal@OR-ST-E07L02:~/devoir-vtk-2026/build$ ./vtktp --batch
+============================================================
+  devoir visualisation vtk 2026
+  fichier  : Mystere6_CHAR_X_1118_Y_2046_Z_694.raw
+  dims     : 1118 x 2046 x 694
+  bloc ooc : 16 tranches Z
+  openmp   : 16 threads
+  mode     : batch
+============================================================
+Memory: for "demarrage", the program has requested virtual mem 232060Ko", resident set 67840Ko
+
+[batch] generation de 8 images entre 1 et 255
+  [ooc-par] 44 blocs, 16 threads openmp
+  [ooc-par] [========                      ]  29%  13/44      [readblock] min=0  max=0  (bloc z=0...15)
+  [ooc-par] [============================= ]  97%  43/44  
+[batch] val=     1  -> iso_Mystere6_C_val000001.png  (111386385 polys)
+  [ooc-par] 44 blocs, 16 threads openmp
+  [ooc-par] [=========                     ]  31%  14/44      [readblock] min=0  max=0  (bloc z=0...15)
+  [ooc-par] [============================= ]  97%  43/44  
+[batch] val=    37  -> iso_Mystere6_C_val000037.png  (9125278 polys)
+  [ooc-par] 44 blocs, 16 threads openmp
+  [ooc-par] [====                          ]  13%  6/44      [readblock] min=0  max=0  (bloc z=0...15)
+  [ooc-par] [============================= ]  97%  43/44  
+[batch] val=    73  -> iso_Mystere6_C_val000073.png  (3544500 polys)
+  [ooc-par] 44 blocs, 16 threads openmp
+  [ooc-par] [==========                    ]  34%  15/44      [readblock] min=0  max=0  (bloc z=0...15)
+  [ooc-par] [============================= ]  97%  43/44  
+[batch] val=   109  -> iso_Mystere6_C_val000109.png  (1056766 polys)
+  [ooc-par] 44 blocs, 16 threads openmp
+  [ooc-par] [==========                    ]  34%  15/44      [readblock] min=0  max=0  (bloc z=0...15)
+  [ooc-par] [============================= ]  97%  43/44  
+[batch] val=   146  -> iso_Mystere6_C_val000146.png  (354094 polys)
+  [ooc-par] 44 blocs, 16 threads openmp
+  [ooc-par] [==========                    ]  34%  15/44      [readblock] min=0  max=0  (bloc z=0...15)
+  [ooc-par] [============================= ]  97%  43/44  
+[batch] val=   182  -> iso_Mystere6_C_val000182.png  (109916 polys)
+  [ooc-par] 44 blocs, 16 threads openmp
+  [ooc-par] [==========                    ]  34%  15/44      [readblock] min=0  max=0  (bloc z=0...15)
+  [ooc-par] [============================= ]  97%  43/44  
+[batch] val=   218  -> iso_Mystere6_C_val000218.png  (48502 polys)
+  [ooc-par] 44 blocs, 16 threads openmp
+  [ooc-par] [===                           ]  11%  5/44      [readblock] min=0  max=0  (bloc z=0...15)
+  [ooc-par] [============================= ]  97%  43/44  
+2026-03-26 13:49:29.347 (  48.618s) [        959C6200]vtkDemandDrivenPipeline:666    ERR| vtkCompositeDataPipeline (0x55f971b5a7f0): Input port 0 of algorithm vtkAppendPolyData(0x55f971bf2020) has 0 connections but is not optional.
+[batch] val=255 -> aucun polygone, image ignoree
+
+[batch] termine. images png dans le repertoire courant.
+tplocal@OR-ST-E07L02:~/devoir-vtk-2026/build$ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+tplocal@OR-ST-E07L02:~/devoir-vtk-2026/build$ make -j$(nproc)
+Consolidate compiler generated dependencies of target vtktp
+[ 33%] Building CXX object CMakeFiles/vtktp.dir/proj.cpp.o
+[ 66%] Linking CXX executable vtktp
+[100%] Built target vtktp
+tplocal@OR-ST-E07L02:~/devoir-vtk-2026/build$ ./vtktp --bench
+============================================================
+  devoir visualisation vtk 2026
+  fichier  : Mystere10_CHAR_X_1204_Y_1296_Z_224.raw
+  dims     : 1204 x 1296 x 224
+  bloc ooc : 16 tranches Z
+  openmp   : 16 threads
+  mode     : bench
+============================================================
+Memory: for "demarrage", the program has requested virtual mem 232060Ko", resident set 67756Ko
+
+[bench] valeur isosurface de test : 146
+
+    [readblock] min=0  max=255  (bloc z=0...223)
+[mode 1 - naif complet]   temps=3.87s   RAM+389844 ko
+Memory: for "apres mode naif", the program has requested virtual mem 232188.00Ko", resident set 71932.00Ko
+  [ooc-seq] 14 blocs de 16 tranches
+  [ooc-seq] [                              ]   0%  0/14      [readblock] min=0  max=199  (bloc z=0...15)
+  [ooc-seq] [==                            [ooc-seq] [====                          [ooc-seq] [======                        [ooc-seq] [========                      [ooc-seq] [==========                    [ooc-seq] [============                  [ooc-seq] [===============               [ooc-seq] [=================             [ooc-seq] [===================           [ooc-seq] [=====================         [ooc-seq] [=======================       [ooc-seq] [=========================     [ooc-seq] [===========================   [ooc-seq] [==============================] 100%  14/14  
+[mode 2 - ooc sequentiel] temps=3.94s   RAM+226348 ko   polygones=856350
+Memory: for "apres ooc sequentiel", the program has requested virtual mem 499284.00Ko", resident set 234968.00Ko
+  [ooc-par] 14 blocs, 16 threads openmp
+  [ooc-par] [==                            [ooc-par] [                              [ooc-par] [=========================     [ooc-par] [============                  [ooc-par] [===================           [ooc-par] [====                          [ooc-par] [=====================         [ooc-par] [==========                    [ooc-par] [===============               [ooc-par] [======                        [ooc-par] [=================             [ooc-par] [=======================       [ooc-par] [===========================   [ooc-par] [========                      ]  28%  4/14      [readblock] min=0  max=199  (bloc z=0...15)
+
+[mode 3 - ooc+openmp]     temps=0.97s   RAM+382096 ko   polygones=856350
+Memory: for "apres ooc+openmp", the program has requested virtual mem 1474192.00Ko", resident set 617064.00Ko
+
+[bench] termine.
+tplocal@OR-ST-E07L02:~/devoir-vtk-2026/build$ ./vtktp --batch
+============================================================
+  devoir visualisation vtk 2026
+  fichier  : Mystere10_CHAR_X_1204_Y_1296_Z_224.raw
+  dims     : 1204 x 1296 x 224
+  bloc ooc : 16 tranches Z
+  openmp   : 16 threads
+  mode     : batch
+============================================================
+Memory: for "demarrage", the program has requested virtual mem 232060Ko", resident set 67928Ko
+
+[batch] generation de 8 images entre 37 et 255
+  [ooc-par] 14 blocs, 16 threads openmp
+  [ooc-par] [                              [ooc-par] [====                          [ooc-par] [======                        [ooc-par] [=================             [ooc-par] [===================           [ooc-par] [===========================   [ooc-par] [=====================         [ooc-par] [=======================       [ooc-par] [===============               [ooc-par] [=========================     [ooc-par] [========                      [ooc-par] [==                            [ooc-par] [==========                    [ooc-par] [============                  ]  42%  6/14      [readblock] min=0  max=199  (bloc z=0...15)
+
+[batch] val=    37  -> iso_Mystere10__val000037.png  (4344879 polys)
+  [ooc-par] 14 blocs, 16 threads openmp
+  [ooc-par] [                              [ooc-par] [==========                    [ooc-par] [===================           [ooc-par] [=================             [ooc-par] [====                          [ooc-par] [============                  [ooc-par] [==                            [ooc-par] [=====================         [ooc-par] [========                      [ooc-par] [===============               [ooc-par] [======                        [ooc-par] [===========================   [ooc-par] [=========================     [ooc-par] [=======================       ]  78%  11/14      [readblock] min=0  max=199  (bloc z=0...15)
+
+[batch] val=    68  -> iso_Mystere10__val000068.png  (3822766 polys)
+  [ooc-par] 14 blocs, 16 threads openmp
+  [ooc-par] [                              [ooc-par] [===================           [ooc-par] [========                      [ooc-par] [======                        [ooc-par] [=======================       [ooc-par] [=================             [ooc-par] [==========                    [ooc-par] [=========================     [ooc-par] [===========================   [ooc-par] [==                            [ooc-par] [=====================         [ooc-par] [===============               [ooc-par] [====                          [ooc-par] [============                  ]  42%  6/14      [readblock] min=0  max=199  (bloc z=0...15)
+
+[batch] val=    99  -> iso_Mystere10__val000099.png  (2631652 polys)
+  [ooc-par] 14 blocs, 16 threads openmp
+  [ooc-par] [                              [ooc-par] [=========================     [ooc-par] [===========================   [ooc-par] [====                          [ooc-par] [=================             [ooc-par] [======                        [ooc-par] [============                  [ooc-par] [===================           [ooc-par] [===============               [ooc-par] [=====================         [ooc-par] [========                      [ooc-par] [=======================       [ooc-par] [==                            [ooc-par] [==========                    ]  35%  5/14      [readblock] min=0  max=199  (bloc z=0...15)
+
+[batch] val=   130  -> iso_Mystere10__val000130.png  (1820274 polys)
+  [ooc-par] 14 blocs, 16 threads openmp
+  [ooc-par] [                              [ooc-par] [===============               [ooc-par] [===================           [ooc-par] [====                          [ooc-par] [======                        [ooc-par] [==========                    [ooc-par] [=======================       [ooc-par] [========                      [ooc-par] [=================             [ooc-par] [============                  [ooc-par] [==                            [ooc-par] [=====================         [ooc-par] [=========================     [ooc-par] [===========================   ]  92%  13/14      [readblock] min=0  max=199  (bloc z=0...15)
+
+[batch] val=   161  -> iso_Mystere10__val000161.png  (308978 polys)
+  [ooc-par] 14 blocs, 16 threads openmp
+  [ooc-par] [                              [ooc-par] [======                        [ooc-par] [====                          [ooc-par] [==                            [ooc-par] [========                      [ooc-par] [=========================     [ooc-par] [============                  [ooc-par] [===================           [ooc-par] [===========================   [ooc-par] [===============               [ooc-par] [=====================         [ooc-par] [==========                    [ooc-par] [=================             [ooc-par] [=======================       ]  78%  11/14      [readblock] min=0  max=199  (bloc z=0...15)
+
+[batch] val=   192  -> iso_Mystere10__val000192.png  (120966 polys)
+  [ooc-par] 14 blocs, 16 threads openmp
+  [ooc-par] [                              [ooc-par] [==                            [ooc-par] [====                          [ooc-par] [======                        [ooc-par] [========                      [ooc-par] [===========================   [ooc-par] [=========================     [ooc-par] [=================             [ooc-par] [=======================       [ooc-par] [==========                    [ooc-par] [===============               [ooc-par] [=====================         [ooc-par] [============                  [ooc-par] [===================           ]  64%  9/14      [readblock] min=0  max=199  (bloc z=0...15)
+
+[batch] val=   223  -> iso_Mystere10__val000223.png  (53844 polys)
+  [ooc-par] 14 blocs, 16 threads openmp
+  [ooc-par] [                              [ooc-par] [============                  [ooc-par] [===============               [ooc-par] [==                            [ooc-par] [====                          [ooc-par] [=================             [ooc-par] [========                      [ooc-par] [===================           [ooc-par] [=====================         [ooc-par] [=======================       [ooc-par] [=========================     [ooc-par] [==========                    [ooc-par] [===========================   [ooc-par] [======                        ]  21%  3/14      [readblock] min=0  max=199  (bloc z=0...15)
+
+[batch] val=   255  -> iso_Mystere10__val000255.png  (1316 polys)
+
+[batch] termine. images png dans le repertoire courant.
+tplocal@OR-ST-E07L02:~/devoir-vtk-2026/build$ 
+
+
+
+
+
+
+
+
+
+tplocal@OR-ST-E07L02:~/devoir-vtk-2026/build$ make -j$(nproc)
+Consolidate compiler generated dependencies of target vtktp
+[ 33%] Building CXX object CMakeFiles/vtktp.dir/proj.cpp.o
+[ 66%] Linking CXX executable vtktp
+[100%] Built target vtktp
+tplocal@OR-ST-E07L02:~/devoir-vtk-2026/build$ ./vtktp --bench
+============================================================
+  devoir visualisation vtk 2026
+  fichier  : Mystere8_CHAR_X_2048_Y_2048_Z_2048.raw
+  dims     : 2048 x 2048 x 2048
+  bloc ooc : 16 tranches Z
+  openmp   : 16 threads
+  mode     : bench
+============================================================
+Memory: for "demarrage", the program has requested virtual mem 232060Ko", resident set 68100Ko
+
+[bench] valeur isosurface de test : 128
+
+    [readblock] min=0  max=255  (bloc z=0...2047)
+[mode 1 - naif complet]   temps=118.98s   RAM+22479576 ko
+Memory: for "apres mode naif", the program has requested virtual mem 232252.00Ko", resident set 68900.00Ko
+  [ooc-seq] 128 blocs de 16 tranches
+  [ooc-seq] [                              ]   0%  0/128      [readblock] min=0  max=255  (bloc z=0...15)
+  [ooc-seq] [==============================] 100%  128/128  
+[mode 2 - ooc sequentiel] temps=352.54s   RAM+14147744 ko   polygones=254503377
+Memory: for "apres ooc sequentiel", the program has requested virtual mem 3050940.00Ko", resident set 2364916.00Ko
+  [ooc-par] 128 blocs, 16 threads openmp
+  [ooc-par] [===                           ]  11%  15/128      [readblock] min=0  max=255  (bloc z=0...15)
+  [ooc-par] [============================= ]  99%  127/128  
+[mode 3 - ooc+openmp]     temps=31.09s   RAM+15821896 ko   polygones=254503377
+Memory: for "apres ooc+openmp", the program has requested virtual mem 8154616.00Ko", resident set 6551352.00Ko
+
+[bench] termine.
+tplocal@OR-ST-E07L02:~/devoir-vtk-2026/build$ ./vtktp --batch
+
+
+
+

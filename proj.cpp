@@ -46,9 +46,10 @@ int YgridSize = 512;
 int ZgridSize = 134;
 #define SHORT
 #define SMALL
-int startexploreval = 100;
+int startexploreval = 16000;
 int endexploreval   = 65000;
 */
+
 
 
 /* // mystere2 (moyen, SHORT)
@@ -58,9 +59,10 @@ int YgridSize = 400;
 int ZgridSize = 512;
 #define SHORT
 #define SMALL
-int startexploreval = 100;
+int startexploreval = 160;
 int endexploreval   = 65000;
 */
+
 
 /* // mystere4 (moyen, SHORT)
 #define FICHIER  "Mystere4_SHORT_X_512_Y_512_Z_322.raw"
@@ -69,11 +71,12 @@ int YgridSize = 512;
 int ZgridSize = 322;
 #define SHORT
 #define SMALL
-int startexploreval = 100;
+int startexploreval = 12000;
 int endexploreval   = 65000;
 */
 
-// mystere6 (grand, CHAR, BIG)
+
+/* // mystere6 (grand, CHAR, BIG)
 #define FICHIER  "Mystere6_CHAR_X_1118_Y_2046_Z_694.raw"
 int gridSize  = 1118;
 int YgridSize = 2046;
@@ -82,6 +85,7 @@ int ZgridSize = 694;
 #define BIG
 int startexploreval = 1;
 int endexploreval   = 255;
+*/
 
 
 
@@ -118,6 +122,29 @@ int startexploreval = 37;
 int endexploreval   = 255;
 */
 
+/* // mystere8 (grand, CHAR, BIG)
+#define FICHIER  "Mystere8_CHAR_X_2048_Y_2048_Z_2048.raw"
+int gridSize  = 2048;
+int YgridSize = 2048;
+int ZgridSize = 2048;
+#define CHAR
+#define BIG
+int startexploreval = 1;
+int endexploreval   = 255;
+*/
+
+// mystere9 (tres grand, SHORT, BIG)
+#define FICHIER  "Mystere9_SHORT_X_2048_Y_2048_Z_1444.raw"
+int gridSize  = 2048;
+int YgridSize = 2048;
+int ZgridSize = 1444;
+#define SHORT
+#define BIG
+int startexploreval = 100;
+int endexploreval   = 65000;
+
+
+
 /* // mystere11 (SHORT, SMALL)
 #define FICHIER  "Mystere11_SHORT_X_512_Y_512_Z_1024.raw"
 int gridSize  = 512;
@@ -147,6 +174,13 @@ static const int WIN_SIZE = 800;
 
 // nombre d'images generees en mode batch
 static const int NB_EXPLORE_VALUES = 8;
+
+// --- reglages visuels rapides (tests interactifs) -------------------------
+// ajuste ces 3 parametres pour trouver rapidement une bonne vue de Mystere8
+static const double TEST_ISO_VALUE   = 27000.0;
+static const double TEST_OPACITY     = 0.30;
+static const double TEST_CAM_AZIMUTH = 35.0;
+static const double TEST_CAM_ELEV    = 20.0;
 
 
 
@@ -459,7 +493,9 @@ int main(int argc, char* argv[])
     {
         std::cerr << "\n[interactif] calcul de l'isosurface (ooc+openmp)...\n";
 
-        double isoVal = startexploreval;
+        double isoVal = TEST_ISO_VALUE;
+        if (isoVal < startexploreval) isoVal = startexploreval;
+        if (isoVal > endexploreval)   isoVal = endexploreval;
 
         // mesure du temps de calcul
         auto t0 = std::chrono::high_resolution_clock::now();
@@ -491,9 +527,13 @@ int main(int argc, char* argv[])
 
         vtkActor* actor = vtkActor::New();
         actor->SetMapper(mapper);
+        actor->GetProperty()->SetOpacity(TEST_OPACITY);
 
         ren->AddActor(actor);
         ren->ResetCamera();
+        ren->GetActiveCamera()->Azimuth(TEST_CAM_AZIMUTH);
+        ren->GetActiveCamera()->Elevation(TEST_CAM_ELEV);
+        ren->ResetCameraClippingRange();
 
         // interacteur vtk : rotation libre avec la souris (style trackball)
         vtkRenderWindowInteractor* iren = vtkRenderWindowInteractor::New();
